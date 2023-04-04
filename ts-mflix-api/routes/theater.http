@@ -1,0 +1,8 @@
+
+
+###
+GET http://localhost:6060/api/theater
+
+
+###
+GET http://localhost:6060/api/theater/59a47286cfa9a3a73e51e72c

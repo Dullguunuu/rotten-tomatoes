@@ -1,0 +1,8 @@
+
+
+###
+GET http://localhost:6060/api/comment
+
+
+###
+GET http://localhost:6060/api/comment/573a1390f29313caabcd4323
