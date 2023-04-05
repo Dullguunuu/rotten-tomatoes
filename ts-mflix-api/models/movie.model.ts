@@ -28,7 +28,8 @@ interface IMovie {
     imdb: { rating: number, votes: number, id: number };
     countries: string[];
     type: string;
-    tomatoes: { viewer: { rating: number, numReviews: number, meter: number }, lastUpdated: Date }
+    tomatoes: { viewer: { rating: number, numReviews: number, meter: number }, lastUpdated: Date };
+    theaterId: number
 }
 
 
@@ -68,7 +69,8 @@ const movieSchema = new Schema<IMovie>(
                 meter: { type: Number, required: true }
             },
             lastUpdated: { type: Date, required: true }
-        }
+        },
+        theaterId: { type: Number, required: true }
     }, { timestamps: true });
 
 const Movie = model<IMovie>("movies", movieSchema);

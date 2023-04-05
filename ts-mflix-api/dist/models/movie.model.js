@@ -36,7 +36,8 @@ const movieSchema = new mongoose_1.Schema({
             meter: { type: Number, required: true }
         },
         lastUpdated: { type: Date, required: true }
-    }
+    },
+    theaterId: { type: Number, required: true }
 }, { timestamps: true });
 const Movie = (0, mongoose_1.model)("movies", movieSchema);
 exports.default = Movie;

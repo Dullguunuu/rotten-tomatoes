@@ -20,7 +20,7 @@ const create = (req, res) => {
 exports.create = create;
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const getAllComment = yield comment_model_1.default.find({}).limit(5);
+        const getAllComment = yield comment_model_1.default.find({}).populate("movie_id").limit(5);
         res.json({ status: true, result: getAllComment });
     }
     catch (err) {
@@ -31,7 +31,7 @@ exports.getAll = getAll;
 const getOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { _id } = req.params;
     try {
-        const getOneComment = yield comment_model_1.default.findById({ _id });
+        const getOneComment = yield comment_model_1.default.findById({ _id }).populate("movie_id");
         res.json({ status: true, result: getOneComment });
     }
     catch (err) {

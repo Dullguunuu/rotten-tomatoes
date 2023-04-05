@@ -8,7 +8,7 @@ const create = (req: Request, res: Response) => {
 
 const getAll = async (req: Request, res: Response) => {
     try {
-        const getAllComment = await Comment.find({}).limit(5);
+        const getAllComment = await Comment.find({}).populate("movie_id").limit(5);
         res.json({ status: true, result: getAllComment });
     } catch (err) {
         res.json({ status: false, message: err });
@@ -18,7 +18,7 @@ const getAll = async (req: Request, res: Response) => {
 const getOne = async (req: Request, res: Response) => {
     const { _id } = req.params;
     try {
-        const getOneComment = await Comment.findById({ _id });
+        const getOneComment = await Comment.findById({ _id }).populate("movie_id");
         res.json({ status: true, result: getOneComment });
     } catch (err) {
         res.json({ status: false, message: err });
