@@ -11,18 +11,30 @@ const navbarData =
 
 export const Navbar = () => {
     return (
-        <div className='flex h-24 mt-24 w-3/5' style={{ background: "#fa320a" }}>
-            <img
-                style={{ height: "50px" }}
-                alt="Rotten Tomatoes"
-                src="https://images.fandango.com/cms/assets/2d5a3340-be84-11ed-9d20-83ee649e98bd--rt25-logo-mainnav-161x50.svg"
-            />
-            <input placeholder='Search...' className='border-white' />
-            <ul className='flex text-white'>
-                {navbarData.map((e, index) => (
-                    <li key={index}><Link href={e.navLink}>{e.navDesc}</Link></li>
-                ))}
-            </ul>
+        <div className="h-20 flex items-center" style={{ background: "#fa320a" }}>
+            <div className="w-64">
+                <img
+                    style={{ height: "50px" }}
+                    alt="Rotten Tomatoes"
+                    src="https://images.fandango.com/cms/assets/2d5a3340-be84-11ed-9d20-83ee649e98bd--rt25-logo-mainnav-161x50.svg"
+                />
+            </div>
+            <div className="w-64">
+                <input
+                    className="w-full rounded-md border pt-2 border-black "
+                    placeholder="Search ..."
+                />
+            </div>
+            <div className="w-96 pl-4 items-center">
+                <nav>
+                    <ul className="list-none flex justify-between text-white">
+                        {navbarData.map((e, index) => (
+                            <li key={index}><Link href={e.navLink}>{e.navDesc}</Link></li>
+                        ))}
+                    </ul>
+                </nav>
+            </div>
         </div>
+
     )
 }

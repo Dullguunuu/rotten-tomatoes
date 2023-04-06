@@ -9,7 +9,7 @@ const create = (req: Request, res: Response) => {
 
 const getAll = async (req: Request, res: Response) => {
     try {
-        const getAllMovie = await Movie.find({}).limit(5);
+        const getAllMovie = await Movie.find({}).limit(30);
         res.json({ status: true, result: getAllMovie });
     } catch (err) {
         res.json({ status: false, message: err });
