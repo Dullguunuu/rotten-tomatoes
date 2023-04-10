@@ -2,42 +2,44 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const movieSchema = new mongoose_1.Schema({
-    plot: { type: String, required: true },
-    genres: { type: [String], required: true },
-    runtime: { type: Number, required: true },
-    rated: { type: String, required: true },
-    cast: { type: [String], required: true },
-    num_mflix_comments: { type: Number, required: true },
-    poster: { type: String, required: true },
-    title: { type: String, required: true },
-    fullplot: { type: String, required: true },
-    languages: { type: [String], required: true },
-    released: { type: Date, required: true },
-    directors: { type: [String], required: true },
-    writers: { type: [String], required: true },
-    awards: {
-        wins: { type: Number, required: true },
-        nominations: { type: Number, required: true },
-        text: { type: String, required: true }
-    },
-    lastupdated: { type: Date, required: true },
-    year: { type: Number, required: true },
+    plot: String,
+    genres: [String],
+    runtime: Number,
+    cast: String,
+    poster: String,
+    title: String,
+    countries: [String],
+    released: Date,
+    type: String,
     imdb: {
-        rating: { type: Number, required: true },
-        votes: { type: Number, required: true },
-        id: { type: Number, required: true }
+        rating: Number,
+        votes: Number,
+        id: Number,
     },
-    countries: { type: [String], required: true },
-    type: { type: String, required: true },
+    num_mflix_comments: Number,
     tomatoes: {
         viewer: {
-            rating: { type: Number, required: true },
-            numReviews: { type: Number, required: true },
-            meter: { type: Number, required: true }
+            rating: Number,
+            numReviews: Number,
+            meter: Number,
         },
-        lastUpdated: { type: Date, required: true }
+        dvd: String,
+        critic: {
+            rating: Number,
+            numReviews: Number,
+            meter: Number,
+        },
+        lastUpdated: Date,
+        rotten: Number,
+        production: String,
+        fresh: Number,
     },
-    theaterId: { type: Number, required: true }
+    theaterId: Number,
 }, { timestamps: true });
+// movieSchema.virtual("theaterInfo", {
+//     ref: "theaters", // The model to use
+//     localField: "theaterId", // Find people where `localField`
+//     foreignField: "theaterId", // is equal to `foreignField`
+// });
 const Movie = (0, mongoose_1.model)("movies", movieSchema);
 exports.default = Movie;
