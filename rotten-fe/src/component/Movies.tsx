@@ -91,11 +91,11 @@ const Movies = (): JSX.Element => {
                 {movies?.map((item, index) => {
                     return (
                         <div className="w-full">
-                            <img src={item.poster} width={200} alt={item.title} />
+                            <img src={movies.poster} width={200} alt={movies.title} />
                             <div className="flex">
                                 <TomatoesMeter
-                                    criticMeter={item.tomatoes.critic?.meter}
-                                    viewerMeter={item.tomatoes.viewer?.meter}
+                                    criticMeter={movies.tomatoes.critic?.meter}
+                                    viewerMeter={movies.tomatoes.viewer?.meter}
                                 />
                             </div>
                             <Link href={`/movie/${item._id}`}>
