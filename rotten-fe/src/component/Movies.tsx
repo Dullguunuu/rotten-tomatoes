@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { MovieCard } from "./MovieCard";
+import { TomatoesMeter } from "./TomatoesMeter";
+import Link from "next/link";
 
 export interface IMovie {
     _id: string;
@@ -35,7 +37,7 @@ export interface IMovie {
         rotten: number;
         production: string;
         fresh: number;
-    };
+    }[];
     theaterId: {
         type: number;
     };
@@ -55,19 +57,19 @@ const meterViewerUrl = {
 
 const Movies = (): JSX.Element => {
     const [movies, setMovies] = useState<Array<IMovie>>([]);
-    const viewerUrl =
-        movies.tomatoes.viewer.meter > 60
-            ? meterViewerUrl.v1
-            : viewerMeter < 60
-                ? meterViewerUrl.v2
-                : meterViewerUrl.v3;
+    // const viewerUrl =
+    //     movies?.tomatoes.viewer.meter > 60
+    //         ? meterViewerUrl.v1
+    //         : viewer.meter < 60
+    //             ? meterViewerUrl.v2
+    //             : meterViewerUrl.v3;
 
-    const criticUrl =
-        criticMeter > 60
-            ? meterUrl.m1
-            : criticMeter < 60
-                ? meterUrl.m2
-                : meterUrl.m3;
+    // const criticUrl =
+    //     movies?.critic.meter > 60
+    //         ? meterUrl.m1
+    //         : criticMeter < 60
+    //             ? meterUrl.m2
+    //             : meterUrl.m3;
 
 
     useEffect(() => {
@@ -90,18 +92,17 @@ const Movies = (): JSX.Element => {
             <div className="grid grid-cols-4 gap-4">
                 {movies?.map((item, index) => {
                     return (
-                        <div className="w-full">
-                            <img src={movies.poster} width={200} alt={movies.title} />
-                            <div className="flex">
+                        <div className="w-full" key={index}>
+                            <img src={item.poster} width={200} alt={item.title} />
+                            {/* <div className="flex">
                                 <TomatoesMeter
-                                    criticMeter={movies.tomatoes.critic?.meter}
-                                    viewerMeter={movies.tomatoes.viewer?.meter}
+                                    criticMeter={item.tomatoes.critic?.meter}
+                                    viewerMeter={item.tomatoes.viewer?.meter}
                                 />
-                            </div>
+                            </div> */}
                             <Link href={`/movie/${item._id}`}>
                                 <h1>{item.title}</h1>
                             </Link>
-                            <span>Opens up {date.toLocaleDateString()}</span>
                         </div>
                     )
                 })}
